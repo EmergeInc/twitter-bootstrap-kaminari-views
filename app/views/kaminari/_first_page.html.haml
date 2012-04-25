@@ -7,6 +7,9 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 
-- unless current_page.first?
+- if current_page.first?
+  %li{:class => "first disabled"}
+    %a= raw(t 'views.pagination.first')
+- else
   %li{:class => "first"}
     = link_to_unless current_page.first?, raw(t 'views.pagination.first'), url, :remote => remote
